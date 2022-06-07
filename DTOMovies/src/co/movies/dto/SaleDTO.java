@@ -9,7 +9,7 @@ import co.movies.crosscutting.util.text.UtilText;
 
 public class SaleDTO {
 
-	private long idSale;
+	private int idSale;
 	private String saleIdNumber;
 	private List<PointOfSaleDTO> pointOfSale;
 	private List<TicketDTO> tickets;
