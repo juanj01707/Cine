@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-import co.movies.util.object.UtilObject;
+import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscutting.util.text.UtilText;
 
 public class ProductoDTO {

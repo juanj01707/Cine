@@ -1,5 +1,5 @@
 package co.movies.dto;
 
-public class MekatoDTO {
+public class ProductDTO {
 
 }

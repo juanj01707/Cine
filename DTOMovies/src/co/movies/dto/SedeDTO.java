@@ -2,9 +2,9 @@ package co.movies.dto;
 
 public class SedeDTO {
 
-	public SedeDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private short idSede;
+	private String idNumber;
+	private String name;
+;
 
 }

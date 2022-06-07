@@ -1,5 +1,5 @@
 package co.movies.dto;
 
-public class TiqueteDTO {
+public class TicketDTO {
 
 }

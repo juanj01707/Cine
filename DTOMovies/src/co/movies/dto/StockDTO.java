@@ -2,21 +2,21 @@ package co.movies.dto;
 
 import co.movies.crosscutting.util.numeric.UtilNumeric;
 import co.movies.crosscutting.util.object.UtilObject;
-import co.movies.crosscutting.util.text.UtilText;
+import co.movies.crosscutting.util.text.UtilText; 
 
 public class StockDTO {
 	private int id;
 	private String name;
 	private int unit;
-	private MekatoDTO Mekato;
+	private ProductDTO Mekato;
 
 	public StockDTO() {
 		super();
 		setName(UtilText.EMPTY);
-		setMekato(new MekatoDTO());
+		setMekato(new ProductDTO());
 		setUnit(0);
 	}
-	public StockDTO(int id, String name, int unit, MekatoDTO Mekato) {
+	public StockDTO(int id, String name, int unit, ProductDTO Mekato) {
 		super();
 		setId(id);
 		setName(name);
@@ -48,12 +48,12 @@ public class StockDTO {
 		this.unit = (int) UtilNumeric.getUtilNumeric().getDefault(unit);
 	}
 
-	public MekatoDTO getMekato() {
+	public ProductDTO getMekato() {
 		return Mekato;
 	}
 
-	public void setRawMaterial(MekatoDTO Mekato) {
-		this.Mekato = UtilObject.getUtilObject().getDefault(Mekato, new MekatoDTO());
+	public void setMekato(ProductDTO Mekato) {
+		this.Mekato = UtilObject.getUtilObject().getDefault(Mekato, new ProductDTO());
 	}
 	
 }
