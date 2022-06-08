@@ -9,7 +9,7 @@ import co.movies.crosscutting.util.text.UtilText;
 
 public class SaleDTO {
 
-	private int idSale;
+	private long idSale;
 	private String saleIdNumber;
 	private List<PointOfSaleDTO> pointOfSale;
 	private List<TicketDTO> tickets;
@@ -49,7 +49,7 @@ public class SaleDTO {
 	}
 
 	public void setIdSale(long idSale) {
-		this.idSale = idSale;
+		this.idSale =  idSale;
 	}
 
 	public String getSaleIdNumber() {

@@ -3,6 +3,7 @@ package co.movies.data.factory;
 import java.sql.Connection;
 
 import co.movies.data.dao.SaleDAO;
+import co.movies.data.factory.azuresql.AzureSqlDAOFactory;
 
 public abstract class DAOFactory {
 	
@@ -24,5 +25,7 @@ public abstract class DAOFactory {
 	public abstract void rollbackTransaction();
 	
 	public abstract SaleDAO getSaleDAO();
+	
+	
 
 }

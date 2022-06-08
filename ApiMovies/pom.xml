@@ -41,7 +41,7 @@
 
 		<dependency>
 			<groupId>co.movies</groupId>
-			<artifactId>CrossCutting</artifactId>
+			<artifactId>CrossCuttingMovies</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

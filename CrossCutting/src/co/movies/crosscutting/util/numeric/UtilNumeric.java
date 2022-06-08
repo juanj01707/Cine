@@ -47,9 +47,11 @@ public class UtilNumeric {
 		return !isEqualThan(oneValue, twoValue);
 	}
 
-	public <T extends Number> boolean isBetween(T value, T initialRange, T finalRange, boolean includeInitialRange, boolean includeFinalRange) {
+	public <T extends Number> boolean isBetween(T value, T initialRange, T finalRange, boolean includeInitialRange,
+			boolean includeFinalRange) {
 
-		return (includeInitialRange ? isGreaterOrEqualThan(value, initialRange) : isGreaterThan(value, initialRange)) && (includeFinalRange ? isLessOrEqualThan(value, finalRange) : isLessThan(value, finalRange));
+		return (includeInitialRange ? isGreaterOrEqualThan(value, initialRange) : isGreaterThan(value, initialRange))
+				&& (includeFinalRange ? isLessOrEqualThan(value, finalRange) : isLessThan(value, finalRange));
 	}
 
 	public <T extends Number> boolean isBetweenIncludeRanges(T value, T initialRange, T finalRange) {
@@ -64,6 +66,5 @@ public class UtilNumeric {
 	public <T extends Number> boolean isNegative(T value) {
 		return !isPositive(value);
 	}
-
 
 }
