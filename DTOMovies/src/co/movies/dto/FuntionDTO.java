@@ -1,16 +1,14 @@
 package co.movies.dto;
 
-import java.util.List;
-
 import co.movies.crosscutting.util.numeric.UtilNumeric;
 import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscutting.util.text.UtilText;
 
-public class FuncionDTO {
+public class FuntionDTO {
 	
-	private int id;
-	private String name;
-	private ClientDTO client;
+	private int FuntionId;
+	private SalaDTO sala;
+	
 	
 		
 	

@@ -1,8 +1,5 @@
 package co.movies.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscutting.util.text.UtilText;
 

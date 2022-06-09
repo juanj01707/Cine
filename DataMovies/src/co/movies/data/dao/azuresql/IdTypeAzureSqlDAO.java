@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static  co.movies.crosscutting.util.text.UtilText.SPACE;
+
 import co.movies.crosscutting.util.numeric.UtilNumeric;
 import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscutting.util.text.UtilText;
