@@ -7,7 +7,7 @@ public class SalaDTO {
 	private int salaId;
 	private String salaName;
 	private SedeDTO sede;
-	private salaStatement salaStatement;
+	private SalaStatementDTO salaStatement;
 	private ChairDTO chair;
 	
 
@@ -16,11 +16,11 @@ public class SalaDTO {
 		setSalaId(salaId);
 		setSalaName(UtilText.EMPTY);
 		setSede(new SedeDTO());
-		setSalaStatement(new salaStatement());
+		setSalaStatement(new SalaStatementDTO());
 		setChair(new ChairDTO());
 	}
 
-	public SalaDTO(int salaId, String salaName, SedeDTO sede, salaStatement salaStatement, ChairDTO chair) {
+	public SalaDTO(int salaId, String salaName, SedeDTO sede, SalaStatementDTO salaStatement, ChairDTO chair) {
 		super();
 		setSalaId(salaId);
 		setSalaName(salaName);
@@ -48,11 +48,11 @@ public class SalaDTO {
 	public void setSede(SedeDTO sede) {
 		this.sede = UtilObject.getUtilObject().getDefault(sede, new SedeDTO());
 	}
-	public salaStatement getEstadoSala() {
+	public SalaStatementDTO getSalaStatement() {
 		return salaStatement;
 	}
-	public void setSalaStatement(salaStatement salaStatement) {
-		this.salaStatement = UtilObject.getUtilObject().getDefault(salaStatement, new salaStatement());
+	public void setSalaStatement(SalaStatementDTO salaStatement) {
+		this.salaStatement = UtilObject.getUtilObject().getDefault(salaStatement, new SalaStatementDTO());
 	}
 	public ChairDTO getChair() {
 		return chair;

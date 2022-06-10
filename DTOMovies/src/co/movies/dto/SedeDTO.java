@@ -14,6 +14,7 @@ public class SedeDTO {
 		return idSede;
 		
 
+<<<<<<< Updated upstream
 		
 	}
 		
@@ -26,6 +27,9 @@ public class SedeDTO {
 		this.direction = direction;
 	}
 	
+=======
+
+>>>>>>> Stashed changes
 	public SedeDTO() {
 		super();
 		setName(UtilText.EMPTY);
@@ -33,7 +37,17 @@ public class SedeDTO {
 
 		setDirection(UtilText.EMPTY);
 	}
+	
+	public SedeDTO(int id, String name, CityDTO city, String direction
+			) {
+		super();
+		setId(id);
+		setName(name);
+		setCity(city);
 
+		setDirection(direction);
+
+<<<<<<< Updated upstream
 
 	public void setIdSede(short idSede) {
 		this.idSede = idSede;
@@ -43,6 +57,15 @@ public class SedeDTO {
 	}
 	public void setIdNumber(String idNumber) {
 		this.idNumber = idNumber;
+=======
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+>>>>>>> Stashed changes
 	}
 	public String getName() {
 		return name;
@@ -50,11 +73,19 @@ public class SedeDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+<<<<<<< Updated upstream
 	public String getCity() {
 		return city ;
 	}
 	public void setCity(String city) {
 		this.city = UtilObject.getUtilObject().getDefault(city);
+=======
+	public CityDTO getCity() {
+		return city;
+	}
+	public void setCity(CityDTO city) {
+		this.city = UtilObject.getUtilObject().getDefault(city, new CityDTO());
+>>>>>>> Stashed changes
 	}
 	public String getDirection() {
 		return direction;

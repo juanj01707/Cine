@@ -16,9 +16,6 @@ import co.movies.crosscuttingmovies.exception.MoviesException;
 import co.movies.data.dao.ClientDAO;
 import co.movies.data.dao.connection.ConnectionSQL;
 import co.movies.dto.ClientDTO;
-import co.movies.dto.IdTypeDTO;
-
-
 
 public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 
@@ -47,9 +44,9 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to create a new client on sql server", exception);
+					"An unexpected problem trying to create a new client on sql server", exception);
 
-		}		
+		}
 	}
 
 	@Override
@@ -70,10 +67,10 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to update Client on sql server", exception);
+					"An unexpected problem trying to update Client on sql server", exception);
 
-		}	
-		
+		}
+
 	}
 
 	@Override
@@ -81,8 +78,8 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		String sql = "DELETE FROM Client WHERE (id=?)";
 
 		try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
-			preparedStatement.setInt(1,id);
-			
+			preparedStatement.setInt(1, id);
+
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
@@ -91,9 +88,8 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to delete a Client on sql server", exception);
+					"An unexpected problem trying to delete a Client on sql server", exception);
 
-		
 		}
 	}
 
@@ -124,19 +120,19 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 				parameters.add(UtilText.trim(client.getName()));
 				setWhere = false;
 			}
-			
+
 			if (!UtilText.isEmpty(client.getIdNumber())) {
 				sb.append(setWhere ? "WHERE " : "AND ");
 				sb.append("idNumber = ? ");
 				parameters.add(UtilText.trim(client.getIdNumber()));
 				setWhere = false;
-			}			
-			
-			if (UtilNumeric.getUtilNumeric().isGreaterThan(client.getIdType().getId(),0)) {
+			}
+
+			if (UtilNumeric.getUtilNumeric().isGreaterThan(client.getIdType().getId(), 0)) {
 				sb.append(setWhere ? "WHERE " : "AND ");
 				sb.append("idType = ? ");
 				parameters.add(client.getIdType().getId());
-				
+
 			}
 
 		}
@@ -156,20 +152,20 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 
 		} catch (SQLException exception) {
 
-			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to find Cliente on sql server", exception);
+			throw MoviesException
+					.buildTechnicalDataException("There was a problem trying to find Cliente on sql server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to find an Client on sql server", exception);
+					"An unexpected problem trying to find an Client on sql server", exception);
 
 		}
 
 		return results;
-		
+
 	}
-	
+
 	private List<ClientDTO> executeQuery(PreparedStatement preparedStatement) {
 
 		List<ClientDTO> results = new ArrayList<>();
@@ -181,13 +177,13 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to execute the query for recover client on sql server",
+					"There was a problem trying to execute the query for recovery the client on Azure SQL Server",
 					exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to execute the query for recover client on sql server",
+					"An unexpected problem has ocurred trying to execute the query for recovery the client on Azure SQL Server",
 					exception);
 
 		}
@@ -212,13 +208,13 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 
 		} catch (SQLException exception) {
 
-			throw MoviesException.buildTechnicalDataException("There was a problem trying to recover the client",
-					exception);
+			throw MoviesException.buildTechnicalDataException(
+					"There was a problem trying to recover the client on Azure SQL Server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to recover the clients registry on sql server", exception);
+					"An unexpected problem has ocurred trying to recover the client on Azure SQL Server", exception);
 
 		}
 
@@ -231,23 +227,20 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		ClientDTO dto = new ClientDTO();
 
 		try {
-			
-			IdTypeDTO idType = new IdTypeDTO(resultSet.getInt("idType"), "");
 
 			dto.setId(resultSet.getInt("id"));
 			dto.setName(resultSet.getString("name"));
 			dto.setIdNumber(resultSet.getString("idNumber"));
-			dto.setIdType(idType);
 
 		} catch (SQLException exception) {
 
-			throw MoviesException.buildTechnicalDataException("There was a problem trying to assemble the clientss",
-					exception);
+			throw MoviesException.buildTechnicalDataException(
+					"There was a problem trying to assemble the client on Azure SQL Server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to assemble the id clients on sql server", exception);
+					"An unexpected problem has ocurred trying to assemble the client on Azure SQL Server", exception);
 
 		}
 

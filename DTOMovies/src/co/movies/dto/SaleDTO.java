@@ -9,7 +9,7 @@ import co.movies.crosscutting.util.text.UtilText;
 
 public class SaleDTO {
 
-	private long idSale;
+	private int idSale;
 	private String saleIdNumber;
 	private List<PointOfSaleDTO> pointOfSale;
 	private List<TicketDTO> tickets;
@@ -31,7 +31,7 @@ public class SaleDTO {
 
 	}
 
-	public SaleDTO(long idSale, String saleIdNumber, List<PointOfSaleDTO> pointOfSale, List<TicketDTO> tickets,
+	public SaleDTO(int idSale, String saleIdNumber, List<PointOfSaleDTO> pointOfSale, List<TicketDTO> tickets,
 			List<ProductDTO> products, int value, SaleStatementDTO saleStatement, LocalDateTime date) {
 		super();
 		setIdSale(idSale);
@@ -44,11 +44,11 @@ public class SaleDTO {
 		setDate(date);
 	}
 
-	public long getIdSale() {
+	public int getIdSale() {
 		return idSale;
 	}
 
-	public void setIdSale(long idSale) {
+	public void setIdSale(int idSale) {
 		this.idSale =  idSale;
 	}
 

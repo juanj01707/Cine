@@ -224,7 +224,7 @@ public class CityAzureSqlDAO extends ConnectionSQL implements CityDAO {
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to assemble the citys on sql server", exception);
+					"an unexpected problem trying to assemble the citys on sql server", exception);
 
 		}
 

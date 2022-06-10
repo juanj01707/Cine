@@ -15,17 +15,15 @@ import co.movies.crosscutting.util.text.UtilText;
 import co.movies.crosscuttingmovies.exception.MoviesException;
 import co.movies.data.dao.ProductDAO;
 import co.movies.data.dao.connection.ConnectionSQL;
-import co.movies.dto.ClientDTO;
-import co.movies.dto.IdTypeDTO;
 import co.movies.dto.ProductDTO;
 
 public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 
 	protected ProductAzureSqlDAO(Connection connection) {
 		super(connection);
-		// TODO Auto-generated constructor stub
+
 	}
-	
+
 	public static ProductDAO build(Connection connection) {
 		return new ProductAzureSqlDAO(connection);
 	}
@@ -43,15 +41,16 @@ public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to create a new product on sql server", exception);
+					"There was a problem trying to create the new product on Azure SQL Server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to create a new product on sql server", exception);
+					"An unexpected problem has ocurred trying to create the new product on Azure SQL Server",
+					exception);
 
-		}	
-		
+		}
+
 	}
 
 	@Override
@@ -65,35 +64,35 @@ public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to update a new product on sql server", exception);
+					"There was a problem trying to update the product on Azure SQL Server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to update product on sql server", exception);
+					"An unexpected problem has ocurred trying to update the product on Azure SQL Server", exception);
 
-		}	
-		
+		}
+
 	}
 
 	@Override
 	public void delete(int productId) {
-		String sql = "DELETE FROM product WHERE id = ?";
+			String sql = "DELETE FROM product WHERE id = ?";
+	
+			try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+	
+				preparedStatement.setInt(1, productId);
+	
+				preparedStatement.executeUpdate();
+	
+			} catch (SQLException exception) {
+				throw MoviesException.buildTechnicalDataException(
+						"There was a problem trying to delete the product on Azure SQL Server", exception);
+			} catch (Exception exception) {
+				throw MoviesException.buildTechnicalDataException(
+						"An unexpected problem has ocurred trying to delete the product on Azure SQL Server", exception);
+			}
 
-		try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
-
-			preparedStatement.setInt(1, productId);
-
-			preparedStatement.executeUpdate();
-
-		} catch (SQLException exception) {
-			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to delete the product on Azure SQL Server", exception);
-		} catch (Exception exception) {
-			throw MoviesException.buildTechnicalDataException(
-					"An unexpected problem has ocurred trying to delete the product on Azure SQL Server", exception);
-		}
-		
 	}
 
 	@Override
@@ -103,14 +102,13 @@ public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 		List<ProductDTO> results = new ArrayList<ProductDTO>();
 
 		StringBuilder sb = new StringBuilder(SPACE);
-		sb.append("Select id, name, idNumber, idType").append(SPACE);
-		sb.append("From Client ");
+		sb.append("Select id, name, idNumber, price").append(SPACE);
+		sb.append("From product ");
 
 		if (!UtilObject.getUtilObject().isNull(product)) {
 
 			if (UtilNumeric.getUtilNumeric().isGreaterThan(product.getProductId(), 0)) {
-				sb.append("WHERE").append(SPACE);
-				sb.append("id = ? ");
+				sb.append("WHERE id = ? ");
 				parameters.add(product.getProductId());
 				setWhere = false;
 
@@ -120,21 +118,21 @@ public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 				sb.append(setWhere ? "WHERE " : "AND ");
 				sb.append("name = ? ");
 				parameters.add(UtilText.trim(product.getProductName()));
-				setWhere = false;
+
 			}
-			
+
 			if (!UtilText.isEmpty(product.getProductIdNumber())) {
 				sb.append(setWhere ? "WHERE " : "AND ");
 				sb.append("idNumber = ? ");
 				parameters.add(UtilText.trim(product.getProductIdNumber()));
-				setWhere = false;
-			}			
-			
-			if (UtilNumeric.getUtilNumeric().isGreaterThan(product.getPrice(),0)) {
-				sb.append(setWhere ? "WHERE " : "AND ");
-				sb.append("idType = ? ");
+
+			}
+
+			if (UtilNumeric.getUtilNumeric().isGreaterThan(product.getPrice(), 0)) {
+				sb.append("WHERE price = ? ");
 				parameters.add(product.getPrice());
-				
+				setWhere = false;
+
 			}
 
 		}
@@ -155,18 +153,18 @@ public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to find Cliente on sql server", exception);
+					"There was a problem trying to retrive the product on Azure SQL Server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to find an Client on sql server", exception);
+					"An unexpected problem has ocurred trying to retrives the product on Azure SQL Server", exception);
 
 		}
 
 		return results;
 	}
-	
+
 	private List<ProductDTO> executeQuery(PreparedStatement preparedStatement) {
 
 		List<ProductDTO> results = new ArrayList<>();
@@ -178,13 +176,13 @@ public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to execute the query for recover client on sql server",
+					"There was a problem trying to execute the query for recovery the products on Azure SQL Server",
 					exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to execute the query for recover client on sql server",
+					"An unexpected problem has ocurred trying to execute the query for recovery the product on Azure SQL Server",
 					exception);
 
 		}
@@ -209,13 +207,13 @@ public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 
 		} catch (SQLException exception) {
 
-			throw MoviesException.buildTechnicalDataException("There was a problem trying to recover the client",
-					exception);
+			throw MoviesException.buildTechnicalDataException(
+					"There was a problem trying to recover the product on Azure SQL Server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to recover the clients registry on sql server", exception);
+					"An unexpected problem has ocurred trying to recover the product on Azure SQL Server", exception);
 
 		}
 
@@ -228,8 +226,6 @@ public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 		ProductDTO dto = new ProductDTO();
 
 		try {
-			
-			IdTypeDTO idType = new IdTypeDTO(resultSet.getInt("idType"), "");
 
 			dto.setProductId(resultSet.getInt("id"));
 			dto.setProductName(resultSet.getString("name"));
@@ -238,13 +234,13 @@ public class ProductAzureSqlDAO extends ConnectionSQL implements ProductDAO {
 
 		} catch (SQLException exception) {
 
-			throw MoviesException.buildTechnicalDataException("There was a problem trying to assemble the clientss",
-					exception);
+			throw MoviesException.buildTechnicalDataException(
+					"There was a problem trying to assemble the product on Azure SQL Server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to assemble the id clients on sql server", exception);
+					"An unexpected problem has ocurred trying to assemble the product on Azure SQL Server", exception);
 
 		}
 
