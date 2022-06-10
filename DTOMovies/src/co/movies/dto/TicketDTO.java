@@ -1,13 +1,11 @@
 package co.movies.dto;
 
+import co.movies.crosscutting.util.object.UtilObject;
+import co.movies.crosscutting.util.text.UtilText;
+
 public class TicketDTO {
 	
-<<<<<<< Updated upstream
-	private int
-	private
 
-	
-=======
 	private int ticketId;
 	private String ticketIdNumber;
 	private FuntionDTO funtion;
@@ -69,5 +67,5 @@ public class TicketDTO {
 
 
 
->>>>>>> Stashed changes
+
 }
