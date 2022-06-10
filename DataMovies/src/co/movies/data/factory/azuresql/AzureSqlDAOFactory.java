@@ -184,7 +184,7 @@ public class AzureSqlDAOFactory extends DAOFactory {
 	}
 
 	@Override
-	public IdTypeDAO getIdType() {
+	public IdTypeDAO getIdTypeDAO() {
 		return IdTypeAzureSqlDAO.build(getConnection());
 	}
 

@@ -20,9 +20,9 @@ import co.movies.api.controller.validator.Validator;
 import co.movies.api.controller.validator.idtype.CreateIdTypeValidator;
 import co.movies.businesslogic.facade.IdTypeFacade;
 import co.movies.businesslogic.facade.impl.IdTypeFacadeImpl;
-import co.movies.crosscutting.exception.GradesException;
-import co.movies.crosscutting.exception.enumeration.ExceptionType;
-import co.edu.uco.grades.dto.IdTypeDTO;
+import co.movies.crosscuttingmovies.exception.MoviesException;
+import co.movies.crosscuttingmovies.exception.enumeration.ExceptionType;
+import co.movies.dto.IdTypeDTO;
 
 @RestController
 @RequestMapping("/api/v1/idtype")
@@ -50,7 +50,7 @@ public class IdTypeController {
 				messages.add("Id type was created succesfully!");
 				statusCode = HttpStatus.OK;
 
-			} catch (GradesException exception) {
+			} catch (MoviesException exception) {
 				if (ExceptionType.TECHNICAL.equals(exception.getType())) {
 					messages.add("there was a problem trying to register the new id type. Please, try again... ");
 					System.err.println(exception.getLocation());
@@ -107,7 +107,7 @@ public class IdTypeController {
 				messages.add("Id type were found succesfully!");
 				statusCode = HttpStatus.OK;
 
-			} catch (GradesException exception) {
+			} catch (MoviesException exception) {
 				if (ExceptionType.TECHNICAL.equals(exception.getType())) {
 					messages.add("there was a problem trying to register the new id type. Please, try again... ");
 					System.err.println(exception.getLocation());

@@ -35,7 +35,7 @@ public abstract class DAOFactory {
 
 	public abstract ClientDAO getClientDAO();
 
-	public abstract IdTypeDAO getIdType();
+	public abstract IdTypeDAO getIdTypeDAO();
 
 	public abstract ProductDAO getProductDAO();
 
