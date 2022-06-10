@@ -1,5 +1,7 @@
 package co.movies.data.dao;
 
+import java.util.List;
+
 import co.movies.dto.SaleDTO;
 
 public interface SaleDAO {
@@ -10,6 +12,6 @@ public interface SaleDAO {
 
 	void delete(int idSale);
 
-	void find(SaleDTO idType);
+	List<SaleDTO> find(SaleDTO sale);
 
 }

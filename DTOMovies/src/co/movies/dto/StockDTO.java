@@ -8,7 +8,7 @@ public class StockDTO {
 	private int id;
 	private String name;
 	private int unit;
-	private ProductDTO Mekato;
+	private ProductDTO product;
 
 	public StockDTO() {
 		super();
@@ -49,11 +49,11 @@ public class StockDTO {
 	}
 
 	public ProductDTO getMekato() {
-		return Mekato;
+		return product;
 	}
 
 	public void setMekato(ProductDTO Mekato) {
-		this.Mekato = UtilObject.getUtilObject().getDefault(Mekato, new ProductDTO());
+		this.product = UtilObject.getUtilObject().getDefault(Mekato, new ProductDTO());
 	}
 	
 }
