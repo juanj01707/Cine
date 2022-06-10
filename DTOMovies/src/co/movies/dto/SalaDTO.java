@@ -1,5 +1,8 @@
 package co.movies.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscutting.util.text.UtilText;
 
@@ -61,7 +64,19 @@ public class SalaDTO {
 		this.chair = UtilObject.getUtilObject().getDefault(chair, new ChairDTO());
 	}
 
-	
+public void validateName(List<String> validationMessages){
+		
+		validationMessages = UtilObject.getUtilObject().getDefault(validationMessages, new ArrayList<>());
+		
+		
+		if(UtilText.isEmpty(getSalaName())) {
+			validationMessages.add("Name of sala is required!!!");
+		} else if(UtilText.getDefault(getSalaName()).length() > 50) {
+			validationMessages.add("lenght of name of sala must be less o equals to 50 characters!!!");
+		} else if(UtilText.getDefault(getSalaName()).matches("^[a-zA-ZñÑáÁéÉíÍóÓúÚ ]*$")) {
+			validationMessages.add("Name of sala contais invalid characters!!!");
+		}
+	}
 	
 
 

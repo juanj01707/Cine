@@ -1,36 +1,37 @@
+package co.movies.businesslogic.facade.impl;
+
 import java.util.List;
 
-import co.movies.dto.IdTypeDTO;
-import co.movies.busineelogic.business.IdTypeBusiness;
-import co.movies.busineelogic.business.impl.IdTypeBusinessImpl;
-import co.movies.busineelogic.facade.IdTypeFacade;
-import co.movies.crosscutting.exception.GradesException;
+import co.movies.businesslogic.business.IdTypeBusiness;
+import co.movies.businesslogic.business.impl.IdTypeBusinessImpl;
+import co.movies.businesslogic.facade.IdTypeFacade;
+import co.movies.crosscuttingmovies.exception.MoviesException;
 import co.movies.data.factory.DAOFactory;
+import co.movies.dto.IdTypeDTO;
 
 public class IdTypeFacadeImpl implements IdTypeFacade {
 
 	private DAOFactory daoFactory = DAOFactory.getDaoFactory();
 
-	@Override
 	public void create(IdTypeDTO dto) {
 		DAOFactory daoFactory = DAOFactory.getDaoFactory();
 		try {
 			daoFactory.initTransaction();
-			
+
 			IdTypeBusiness idTypeBusiness = new IdTypeBusinessImpl(daoFactory);
 			idTypeBusiness.create(dto);
+
 			daoFactory.commitTransaction();
-		} catch (GradesException exception) {
+		} catch (MoviesException exception) {
 			daoFactory.rollbackTransaction();
 			throw exception;
 		} catch (Exception exception) {
 			daoFactory.rollbackTransaction();
-			String message = "Thegre was a problme trying to create the new idType on create method in idTypeFacadeImpl ";
-			throw GradesException.buildTechnicalBusinessLogicException(message);
-		}finally {
+			var message = "there was a problem trying to create the new IdType on create method in IdTypeFacadeImpl";
+			throw MoviesException.buildTechnicalBusinessLogicException(message);
+		} finally {
 			daoFactory.closeConnection();
 		}
-		
 	}
 
 	@Override
@@ -38,45 +39,42 @@ public class IdTypeFacadeImpl implements IdTypeFacade {
 		DAOFactory daoFactory = DAOFactory.getDaoFactory();
 		try {
 			daoFactory.initTransaction();
-			
+
 			IdTypeBusiness idTypeBusiness = new IdTypeBusinessImpl(daoFactory);
 			idTypeBusiness.update(dto);
+
 			daoFactory.commitTransaction();
-		} catch (GradesException exception) {
+		} catch (MoviesException exception) {
 			daoFactory.rollbackTransaction();
 			throw exception;
 		} catch (Exception exception) {
 			daoFactory.rollbackTransaction();
-			String message = "Thegre was a problme trying to update the method in idTypeFacadeImpl ";
-			throw GradesException.buildTechnicalBusinessLogicException(message);
-		}finally {
+			var message = "there was a problem trying to update the new IdType on update method in IdTypeFacadeImpl";
+			throw MoviesException.buildTechnicalBusinessLogicException(message);
+		} finally {
 			daoFactory.closeConnection();
 		}
-		
 	}
-
-	
 
 	@Override
 	public void delete(int id) {
-		DAOFactory daoFactory = DAOFactory.getDaoFactory();
 		try {
 			daoFactory.initTransaction();
-			
+
 			IdTypeBusiness idTypeBusiness = new IdTypeBusinessImpl(daoFactory);
 			idTypeBusiness.delete(id);
+
 			daoFactory.commitTransaction();
-		} catch (GradesException exception) {
+		} catch (MoviesException exception) {
 			daoFactory.rollbackTransaction();
 			throw exception;
 		} catch (Exception exception) {
 			daoFactory.rollbackTransaction();
-			String message = "Thegre was a problme trying to delete the method in idTypeFacadeImpl ";
-			throw GradesException.buildTechnicalBusinessLogicException(message);
-		}finally {
+			var message = "there was a problem trying to delete the new IdType on delete method in IdTypeFacadeImpl";
+			throw MoviesException.buildTechnicalBusinessLogicException(message);
+		} finally {
 			daoFactory.closeConnection();
 		}
-		
 	}
 
 	@Override
@@ -85,14 +83,18 @@ public class IdTypeFacadeImpl implements IdTypeFacade {
 		try {
 			IdTypeBusiness idTypeBusiness = new IdTypeBusinessImpl(daoFactory);
 			return idTypeBusiness.find(dto);
-		} catch (GradesException exception) {
+
+		} catch (MoviesException exception) {
+			daoFactory.rollbackTransaction();
 			throw exception;
 		} catch (Exception exception) {
-			
-			String message = "Thegre was a problme trying to find  method in idTypeFacadeImpl ";
-			throw GradesException.buildTechnicalBusinessLogicException(message);
-		}finally {
+			daoFactory.rollbackTransaction();
+			var message = "there was a problem trying to find the new IdType on find method in IdTypeFacadeImpl";
+			throw MoviesException.buildTechnicalBusinessLogicException(message);
+		} finally {
 			daoFactory.closeConnection();
 		}
+
 	}
+
 }

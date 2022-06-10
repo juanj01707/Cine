@@ -1,12 +1,9 @@
-package co.movies.busineelogic.facade;
-
+package co.movies.businesslogic.business;
 import java.util.List;
 
-import co.edu.uco.grade.dto.IdTypeDTO;
+import co.movies.dto.IdTypeDTO;
 
-public interface IdTypeFacade {
-	
-	
+public interface IdTypeBusiness {
 	
 	void create(IdTypeDTO dto);
 	
@@ -15,5 +12,4 @@ public interface IdTypeFacade {
 	void delete (int id);
 	
 	List<IdTypeDTO> find(IdTypeDTO dto);
-	
 }

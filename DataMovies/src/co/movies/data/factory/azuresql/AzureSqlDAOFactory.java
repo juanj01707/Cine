@@ -7,8 +7,22 @@ import java.sql.SQLException;
 import co.movies.crosscutting.util.sql.UtilConnection;
 import co.movies.crosscuttingmovies.exception.MoviesException;
 import co.movies.crosscuttingmovies.exception.enumeration.ExceptionLocation;
+import co.movies.data.dao.CityDAO;
+import co.movies.data.dao.ClientDAO;
+import co.movies.data.dao.IdTypeDAO;
+import co.movies.data.dao.ProductDAO;
+import co.movies.data.dao.SalaDAO;
 import co.movies.data.dao.SaleDAO;
+import co.movies.data.dao.SedeDAO;
+import co.movies.data.dao.TicketDAO;
+import co.movies.data.dao.azuresql.CityAzureSqlDAO;
+import co.movies.data.dao.azuresql.ClientAzureSqlDAO;
+import co.movies.data.dao.azuresql.IdTypeAzureSqlDAO;
+import co.movies.data.dao.azuresql.ProductAzureSqlDAO;
+import co.movies.data.dao.azuresql.SalaAzureSqlDAO;
 import co.movies.data.dao.azuresql.SaleAzureSqlDAO;
+import co.movies.data.dao.azuresql.SedeAzureSqlDAO;
+import co.movies.data.dao.azuresql.TicketAzureSqlDAO;
 import co.movies.data.factory.DAOFactory;
 
 public class AzureSqlDAOFactory extends DAOFactory {
@@ -157,6 +171,43 @@ public class AzureSqlDAOFactory extends DAOFactory {
 	@Override
 	public SaleDAO getSaleDAO() {
 		return SaleAzureSqlDAO.build(getConnection());
+	}
+
+	@Override
+	public CityDAO getCityDAO() {
+		return CityAzureSqlDAO.build(getConnection());
+	}
+
+	@Override
+	public ClientDAO getClientDAO() {
+		return ClientAzureSqlDAO.build(getConnection());
+	}
+
+	@Override
+	public IdTypeDAO getIdType() {
+		return IdTypeAzureSqlDAO.build(getConnection());
+	}
+
+	@Override
+	public ProductDAO getProductDAO() {
+		return ProductAzureSqlDAO.build(getConnection());
+	}
+
+	@Override
+	public SalaDAO getSalaDAO() {
+		return SalaAzureSqlDAO.build(getConnection());
+	}
+
+	@Override
+	public SedeDAO getSedeDAO() {
+		return SedeAzureSqlDAO.build(getConnection());
+	}
+
+	
+
+	@Override
+	public TicketDAO getTicketDAO() {
+		return TicketAzureSqlDAO.build(getConnection());
 	}
 
 }

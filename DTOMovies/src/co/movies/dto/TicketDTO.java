@@ -1,5 +1,8 @@
 package co.movies.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscutting.util.text.UtilText;
 
@@ -63,7 +66,19 @@ public class TicketDTO {
 		this.price = price;
 	}
 
-
+public void validateName(List<String> validationMessages){
+		
+		validationMessages = UtilObject.getUtilObject().getDefault(validationMessages, new ArrayList<>());
+		
+		
+		if(UtilText.isEmpty(getTicketIdNumber())) {
+			validationMessages.add("Name of id type is required!!!");
+		} else if(UtilText.getDefault(getTicketIdNumber()).length() > 50) {
+			validationMessages.add("lenght of name of id type must be less o equals to 50 characters!!!");
+		} else if(UtilText.getDefault(getTicketIdNumber()).matches("^[a-zA-ZñÑáÁéÉíÍóÓúÚ ]*$")) {
+			validationMessages.add("Name of id type contais invalid characters!!!");
+		}
+	}
 
 
 

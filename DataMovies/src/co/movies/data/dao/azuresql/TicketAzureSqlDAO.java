@@ -18,15 +18,15 @@ import co.movies.data.dao.connection.ConnectionSQL;
 import co.movies.dto.ProductDTO;
 import co.movies.dto.TicketDTO;
 
-public class TicketsAzureSqlDAO extends ConnectionSQL implements TicketDAO{
+public class TicketAzureSqlDAO extends ConnectionSQL implements TicketDAO{
 
-	protected TicketsAzureSqlDAO(Connection connection) {
+	protected TicketAzureSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public static TicketDAO build(Connection connection) {
-		return new TicketsAzureSqlDAO(connection);
+		return new TicketAzureSqlDAO(connection);
 	}
 
 	@Override

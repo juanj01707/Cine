@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.movies.crosscutting.util.numeric.UtilNumeric;
 import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscutting.util.text.UtilText;
 
@@ -107,5 +108,19 @@ public class SaleDTO {
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
+
+/*public void validateName(List<String> validationMessages){
+		
+		validationMessages = UtilObject.getUtilObject().getDefault(validationMessages, new ArrayList<>());
+		
+		
+		if(UtilNumeric.getUtilNumeric().getDefault() {
+			validationMessages.add("Name of id type is required!!!");
+		} else if(UtilText.getDefault(getIdSale()).length() > 50) {
+			validationMessages.add("lenght of name of id type must be less o equals to 50 characters!!!");
+		} else if(UtilText.getDefault(getIdSale()).matches("^[a-zA-ZñÑáÁéÉíÍóÓúÚ ]*$")) {
+			validationMessages.add("Name of id type contais invalid characters!!!");
+		}
+	}*/
 
 }
