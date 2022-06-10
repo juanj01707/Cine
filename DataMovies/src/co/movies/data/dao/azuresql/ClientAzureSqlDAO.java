@@ -42,12 +42,12 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to create a new client registry on sql server", exception);
+					"There was a problem trying to create a new client on sql server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to create a new client registry on sql server", exception);
+					"There was an unexpected problem trying to create a new client on sql server", exception);
 
 		}		
 	}
@@ -65,12 +65,12 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to update a new Client registry on sql server", exception);
+					"There was a problem trying to update a new Client on sql server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to update Client registry on sql server", exception);
+					"There was an unexpected problem trying to update Client on sql server", exception);
 
 		}	
 		
@@ -78,7 +78,6 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 
 	@Override
 	public void delete(int id) {
-
 		String sql = "DELETE FROM Client WHERE (id=?)";
 
 		try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
@@ -87,12 +86,12 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to delete a Client registry on sql server", exception);
+					"There was a problem trying to delete a Client on sql server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to delete a Client registry on sql server", exception);
+					"There was an unexpected problem trying to delete a Client on sql server", exception);
 
 		
 		}
@@ -158,12 +157,12 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to find Cliente registry on sql server", exception);
+					"There was a problem trying to find Cliente on sql server", exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to find an Client registry on sql server", exception);
+					"There was an unexpected problem trying to find an Client on sql server", exception);
 
 		}
 
@@ -182,13 +181,13 @@ public class ClientAzureSqlDAO extends ConnectionSQL implements ClientDAO {
 		} catch (SQLException exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was a problem trying to execute the query for recover client registry on sql server",
+					"There was a problem trying to execute the query for recover client on sql server",
 					exception);
 
 		} catch (Exception exception) {
 
 			throw MoviesException.buildTechnicalDataException(
-					"There was an unexpected problem trying to execute the query for recover client registry on sql server",
+					"There was an unexpected problem trying to execute the query for recover client on sql server",
 					exception);
 
 		}
