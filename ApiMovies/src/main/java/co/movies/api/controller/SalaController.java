@@ -18,6 +18,7 @@ import co.movies.api.controller.response.Response;
 import co.movies.api.controller.validator.Validator;
 import co.movies.api.controller.validator.product.CreatedProductValidator;
 import co.movies.api.controller.validator.sala.CreatedSalaValidator;
+import co.movies.businesslogic.facade.SalaFacade;
 import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscuttingmovies.exception.MoviesException;
 import co.movies.crosscuttingmovies.exception.enumeration.ExceptionType;
@@ -47,7 +48,7 @@ public class SalaController {
 
 		if (messages.isEmpty()) {
 			try {
-				IdTypeFacade facade = new IdTypeFacadeImpl();
+				SalaFacade facade = new SalaFacadeImpl();
 				facade.create(dto);
 				;
 				messages.add("Id type was created succesfully!");
@@ -105,7 +106,7 @@ public class SalaController {
 
 		if (messages.isEmpty()) {
 			try {
-				IdTypeFacade facade = new IdTypeFacadeImpl();
+				SalaFacade facade = new SalaFacadeImpl();
 				response.setData(facade.find(new IdTypeDTO()));
 				messages.add("Id type were found succesfully!");
 				statusCode = HttpStatus.OK;

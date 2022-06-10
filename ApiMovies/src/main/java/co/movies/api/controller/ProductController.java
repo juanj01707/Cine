@@ -18,6 +18,7 @@ import co.movies.api.controller.response.Response;
 import co.movies.api.controller.validator.Validator;
 import co.movies.api.controller.validator.client.CreatedClientValidator;
 import co.movies.api.controller.validator.product.CreatedProductValidator;
+import co.movies.businesslogic.facade.ProductFacade;
 import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscuttingmovies.exception.MoviesException;
 import co.movies.crosscuttingmovies.exception.enumeration.ExceptionType;
@@ -46,7 +47,7 @@ public class ProductController {
 
 		if (messages.isEmpty()) {
 			try {
-				IdTypeFacade facade = new IdTypeFacadeImpl();
+				ProductFacade facade = new ProductFacadeImpl();
 				facade.create(dto);
 				;
 				messages.add("Id type was created succesfully!");
@@ -104,7 +105,7 @@ public class ProductController {
 
 		if (messages.isEmpty()) {
 			try {
-				IdTypeFacade facade = new IdTypeFacadeImpl();
+				ProductFacade facade = new ProductFacadeImpl();
 				response.setData(facade.find(new IdTypeDTO()));
 				messages.add("Id type were found succesfully!");
 				statusCode = HttpStatus.OK;

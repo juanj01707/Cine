@@ -18,7 +18,7 @@ import co.movies.api.controller.response.Response;
 import co.movies.api.controller.validator.Validator;
 import co.movies.api.controller.validator.city.CreatedCityValidator;
 import co.movies.api.controller.validator.idtype.CreateIdTypeValidator;
-
+import co.movies.businesslogic.facade.CityFacade;
 import co.movies.crosscutting.util.object.UtilObject;
 import co.movies.crosscuttingmovies.exception.MoviesException;
 import co.movies.crosscuttingmovies.exception.enumeration.ExceptionType;
@@ -46,7 +46,7 @@ public class CityController {
 
 		if (messages.isEmpty()) {
 			try {
-				IdTypeFacade facade = new IdTypeFacadeImpl();
+				CityFacade facade = new CityFacadeImpl();
 				facade.create(dto);
 				;
 				messages.add("Id type was created succesfully!");
@@ -104,7 +104,7 @@ public class CityController {
 
 		if (messages.isEmpty()) {
 			try {
-				IdTypeFacade facade = new IdTypeFacadeImpl();
+				CityFacade facade = new CityFacadeImpl();
 				response.setData(facade.find(new IdTypeDTO()));
 				messages.add("Id type were found succesfully!");
 				statusCode = HttpStatus.OK;
