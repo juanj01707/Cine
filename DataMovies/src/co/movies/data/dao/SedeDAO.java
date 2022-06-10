@@ -5,8 +5,8 @@ import java.util.List;
 import co.movies.dto.SedeDTO;
 
 public interface SedeDAO {
-	void create(SedeDTO campus);
-	void update(SedeDTO campus);
+	void create(SedeDTO sede);
+	void update(SedeDTO sede);
 	void delete(int id);
-	List<SedeDTO> Find(SedeDTO campus);
+	List<SedeDTO> Find(SedeDTO sede);
 }

@@ -1,14 +1,16 @@
 package co.movies.data.dao;
 
+import java.util.List;
+
 import co.movies.dto.ClientDTO;
 
 public interface ClientDAO {
 
-	void create(ClientDTO student);
+	void create(ClientDTO client);
 
-	void update(ClientDTO student);
+	void update(ClientDTO client);
 
 	void delete(int id);
 
-	void find(ClientDTO student);
+	List<ClientDTO> find(ClientDTO client);
 }

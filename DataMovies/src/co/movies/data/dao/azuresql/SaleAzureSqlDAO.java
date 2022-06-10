@@ -1,6 +1,7 @@
 package co.movies.data.dao.azuresql;
 
 import java.sql.Connection;
+import java.util.List;
 
 import co.movies.data.dao.SaleDAO;
 import co.movies.data.dao.connection.ConnectionSQL;
@@ -35,7 +36,8 @@ public class SaleAzureSqlDAO extends ConnectionSQL implements SaleDAO{
 	}
 
 	@Override
-	public void find(SaleDTO idType) {
+	public List<SaleDTO> find(SaleDTO idType) {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
